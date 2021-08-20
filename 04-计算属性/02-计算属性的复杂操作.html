@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <h2>总价格:{{totalPrice}}</h2>
+    <h2>总价格:{{totalPrice3}}</h2>
 </div>
 <script src="../js/vue.js"></script>
 <script>
@@ -25,11 +25,26 @@
         computed: {
             totalPrice: function () {
                 let result = 0;
-                for (let i = 0; i < this.books.size; i++) {
+                for (let i = 0; i < this.books.length; i++) {
                     result += this.books[i].price
                 }
                 return result;
+            },
+            totalPrice2: function () {
+                let result = 0;
+                for (let book of this.books) {
+                    result += book.price
+                }
+                return result
+            },
+            totalPrice3: function () {
+                let result = 0;
+                for (let i in this.books) {
+                    result += this.books[i].price
+                }
+                return result
             }
+
         }
     })
 </script>
