@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--要求,点击哪一个哪一个变红色  -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(movie,index) in movies" v-on:click="itemClick(index)" v-bind:class="styleChange(index)">{{movie}}
+        </li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            movies: ['哪吒', '齐天大圣', '白蛇传', '新大头儿子和小头爸爸'],
+            isActive: -1
+        },
+        methods: {
+            itemClick: function (arg) {
+                console.log(arg)
+                this.isActive = arg
+            },
+            styleChange: function (index) {
+                if (this.isActive === index) {
+                    return {active: true}
+                } else {
+                    return {active: false}
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

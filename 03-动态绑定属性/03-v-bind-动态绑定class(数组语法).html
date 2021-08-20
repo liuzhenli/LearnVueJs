@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--    字符串-->
+    <h2 v-bind:class="['active','line','hello']">{{message}}</h2>
+    <!--    变量-->
+    <h2 v-bind:class=getClass()>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好啊',
+            isActive: true,
+            isLine: true,
+            active: 'aaaa',
+            line: 'bbbb',
+            hello: 'hello'
+        },
+        methods: {
+            getClass: [this.active, this.line, this.hello]
+        }
+    })
+</script>
+</body>
+</html>

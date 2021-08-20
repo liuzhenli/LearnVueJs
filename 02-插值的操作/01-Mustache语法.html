@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{firstName +'  '+ lastNam}}</h2>
+    <h2 v-once>{{firstName +'  '+ lastNam}}</h2>
+    <h2 v-html="url"></h2>
+    <h2 v-text="message">很好!</h2>
+    <h2 v-pre>{{message}}</h2>
+    <h2 v-cloak>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //在vue解析之前,div中有一个属性v-cloak
+
+    setTimeout(function () {
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊!',
+                firstName:'Liu',
+                lastNam:'Zhenli',
+                url:'<a href="http://www.baidu.com">百度一下</a>'
+            }
+        })
+    },2000)
+
+</script>
+</body>
+</html>
