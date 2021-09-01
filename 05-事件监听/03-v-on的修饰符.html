@@ -5,6 +5,41 @@
     <title>Title</title>
 </head>
 <body>
+<div id="app">
 
+    <div @click="divClick">
+        div点击
+        <button @click.stop="buttonClick()">按钮</button>
+    </div>
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+    <!--    监听某个键盘的键帽-->
+    <input type="text" @keyup.enter="keyUp">
+    <!--    .once修饰符-->
+    <button @click.once="buttonClick()">一次点击</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+            buttonClick() {
+                console.log("buttonClick")
+            },
+            divClick() {
+                console.log("divClick")
+            },
+            submitClick() {
+                console.log("submitClick")
+            },
+            keyUp() {
+                console.log("keyup")
+            }
+        }
+    })
+</script>
 </body>
 </html>

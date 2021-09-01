@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="latter in latters">{{latter}}</li>
+    </ul>
+
+    <button @click="buttonClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            latters: ['n', 'f', 'a', 'b', 'c', 'd']
+        },
+        methods: {
+            buttonClick() {
+                //push
+                //this.latters.push('ccc');
+                // pop()
+                //this.latters.pop();
+                // shift()
+                // this.latters.shift()
+                // unshift()
+                // this.latters.unshift("ddd","dd")
+                // splice()  删除元素/插入元素/替换元素
+                //this.latters.splice(1,2,"ddd",'jjj','ddd')
+                //this.latters.sort()
+                // reverse()
+                //this.latters.reverse()
+                Vue.set(this.latters,2,'3')
+            }
+        }
+    })
+</script>
+</body>
+</html>

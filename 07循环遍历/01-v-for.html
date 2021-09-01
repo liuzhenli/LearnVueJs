@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--    在遍历过程中,没有使用索引值(下标值)-->
+        <li v-for="name in names">{{name}}</li>
+    </ul>
+    <!-- 获取索引-->
+    <ul>
+        <li v-for="(name,index) in names">{{index + 1}}.{{name}}</li>
+    </ul>
+    <!--遍历对象  若值获取一个值,获取到的是value-->
+    <ul>
+        <li v-for="item in info">{{item}}</li>
+    </ul>
+
+    <!--遍历对象  包含key value-->
+    <ul>
+        <li v-for="(item,key) in info">{{key}} - {{item}}</li>
+    </ul>
+    <!--遍历对象  包含index-->
+    <ul>
+        <li v-for="(item,key,index) in info">{{index}}-{{key}} - {{item}}</li>
+    </ul>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            names: ["why", 'kebe', "ah", 'dd'],
+            info: {
+                name: 'hello',
+                age: 18,
+                address: 'Hn'
+            }
+        }
+    })
+</script>
+</body>
+</html>
