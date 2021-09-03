@@ -8,14 +8,20 @@
 <div id="app">
     <input type="text" v-model="message">
     {{message}}
-
+    <input type="text" v-on:input="inputChange">
+    <input type="text" :value="message" @input="message=$event.target.message" >
 </div>
 <script src="../js/vue.js"></script>
 <script>
     const app = new Vue({
         el: '#app',
         data: {
-            message:'哈哈哈'
+            message: '哈哈哈'
+        },
+        methods:{
+            inputChange(event){
+                console.log("------",event.target.value)
+            }
         }
     })
 </script>

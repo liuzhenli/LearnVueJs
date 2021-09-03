@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+    <cpn @item-click="cpnClick"></cpn>
+</div>
+<script src="../js/vue.js"></script>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+        {{cName}}
+        <br>
+        <button v-for="(item) in cCategories" @click="cItemClick(item)">{{item.name}}</button>
+    </div>
+</template>
+<script>
+    const cpn = {
+        template: `#cpn`,
+        methods: {
+            cItemClick: function (item) {
+                this.$emit('item-click',item)
+            }
+        },
+        props: {
+            cName: {
+                type: String,
+                default: '小明'
+            },
+            cCategories: {
+                type: Array,
+                default() {
+                    return [{
+                        id: 1,
+                        name: '热门推荐'
+                    }, {
+                        id: 2,
+                        name: '家用电器'
+                    }, {
+                        id: 3,
+                        name: '秋冬换季'
+                    }, {
+                        id: 4,
+                        name: '345的'
+                    }]
+                }
+            }
+        }
+    }
+    const app = new Vue({
+        el: '#app',
+        methods: {
+            cpnClick(item) {
+                console.log(item.name);
+            }
+        },
+        components: {
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

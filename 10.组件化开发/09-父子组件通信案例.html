@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn :c-number="number"
+         :c-number2="number2"
+         @datachange="datachange"
+         @datachange2="datachange2"
+    ></cpn>
+</div>
+<script src="../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <h2>props: {{cNumber}}</h2>
+        <h2>data:{{dNumber}}</h2>
+        <input type="text" :value="dNumber" @input="numberInput">
+
+        <h2>props: {{cNumber2}}</h2>
+        <h2>data:{{dNumber2}}</h2>
+        <input type="text" :value="dNumber2" @input="numberInput2">
+
+    </div>
+</template>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            number: 1,
+            number2: 2
+        },
+        methods: {
+            datachange(msg) {
+                console.log(msg)
+                this.number = parseInt(msg)
+            },
+            datachange2(msg) {
+                this.number2 = parseInt(msg)
+            }
+        },
+        components: {
+            cpn: {
+                template: `#cpn`,
+                props: {
+                    cNumber: {
+                        type: Number,
+                    },
+                    cNumber2: {
+                        type: Number,
+                    }
+                },
+                data() {
+                    return {
+                        dNumber: this.number,
+                        dNumber2: this.number2
+                    }
+                },
+                methods: {
+                    numberInput(event) {
+                        this.dNumber = event.target.value
+                        this.$emit('datachange', this.dNumber)
+                        this.dNumber2 = this.dNumber * 10
+                        this.$emit('datachange2', this.dNumber2)
+                    },
+                    numberInput2(event) {
+                        this.dNumber2 = event.target.value
+                        this.$emit('datachange2', this.dNumber2)
+
+                        this.dNumber = event.target.value/10
+                        this.$emit('datachange', this.dNumber)
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

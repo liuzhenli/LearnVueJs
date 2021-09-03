@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <shi></shi>
+</div>
+<div id="app2">
+    <shi></shi>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const cpnC = Vue.extend({
+        template: `
+        <div>
+            <h2>静夜思</h2>
+            <p>床前明月光</p>
+            <p>疑是地上霜</p>
+            <p>举头望明月</p>
+            <p>地头思故乡</p>
+        </div>
+        `
+    })
+    //全局
+    //Vue.component('shi', cpnC)
+    const app = new Vue({
+        el: '#app',
+        //局部
+        components:{
+            'shi':cpnC
+        },
+        data: {}
+    })
+    const app2 = new Vue({
+        el: '#app2',
+        data: {}
+    })
+</script>
+</body>
+</html>

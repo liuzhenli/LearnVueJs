@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+   <input type="text" v-model.lazy="message">
+    <h2>{{message}}</h2>
+    <br>
+    <input type="number" v-model.number="number">
+    <h2>{{typeof number}}</h2>
+    <br>
+    <input type="text" v-model.trim="trimTxt">
+    <h2>{{trimTxt}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message:'hello',
+            number:0,
+            trimTxt:''
+        }
+    })
+</script>
+</body>
+</html>
